@@ -8,14 +8,9 @@ const app = express();
 
 const url = "https://coinmarketcap.com/";
 
-const crytoData = {
-  number: "",
-  name: "",
-  price: "",
-  change24h: "",
-};
+const crytoDataArray = ["number", "name", "price", "change24h"];
 
-const crytoDataArray = [];
+//Array of objects? Try figure this out
 
 async function getCrytoPrices() {
   //Fetch data using axios
