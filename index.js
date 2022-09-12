@@ -1,9 +1,13 @@
+if (process.env.NODE_ENV !== "production") {
+  require('dotenv').config();
+}
+
 const cheerio = require("cheerio");
 const express = require("express");
 const axios = require("axios");
 const path = require("path");
 const { setPriority } = require("os");
-const PORT = 3000;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
@@ -100,9 +104,9 @@ app.get("/", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`)
+})
 
 
-// Current setPriority - Filter out marketcap and volume 24 extra text
