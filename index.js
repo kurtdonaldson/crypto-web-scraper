@@ -9,6 +9,7 @@ const app = express();
 
 const url = "https://coinmarketcap.com/";
 
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 
 //Array of objects? Try figure this out
@@ -29,7 +30,7 @@ const crytoDataKeys = [
   "name", 
   "price", 
   "1hr%", 
-  "24h%", 
+  "24hr%", 
   "7day%",
   "marketCap",
   "volume24h",

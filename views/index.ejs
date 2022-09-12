@@ -11,21 +11,46 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <link
+      rel="icon"
+      href="/images/icons8-heavy-dollar-sign-16.png"
+      type="image/x-icon"
+    />
   </head>
   <body>
-    <h1 class="text-center mt-4">Cryptocurrency Web Scraper</h1>
+    <h1 class="text-center mt-4 mb-4">Cryptocurrency Web Scraper App</h1>
     <div class="d-flex justify-content-center">
-      <table class="table table-dark table-striped w-75">
+      <table class="table table-dark table-striped w-75 mt-4">
         <thead>
           <tr>
             <th>#</th>
             <th>Name</th>
             <th>Price</th>
-            <th>24h %</th>
+            <th>1hr %</th>
+            <th>24hr %</th>
+            <th>7day %</th>
+            <th>Market Cap</th>
+            <th>Volume (24hr)</th>
+            <th>Circulating Supply</th>
           </tr>
         </thead>
+        <tbody>
+          <% for(let i =0; i < cryptoEjsData.length; i++){ %>
+          <tr>
+            <td><%= cryptoEjsData[i].position %></td>
+            <td><%= cryptoEjsData[i].name %></td>
+            <td><%= cryptoEjsData[i].price %></td>
+            <td><%= cryptoEjsData[i]['1hr%'] %></td>
+            <td><%= cryptoEjsData[i]['24hr%'] %></td>
+            <td><%= cryptoEjsData[i]['7day%'] %></td>
+            <td><%= cryptoEjsData[i].marketCap %></td>
+            <td><%= cryptoEjsData[i].volume24h %></td>
+            <td><%= cryptoEjsData[i].circulatingSupply %></td>
+          </tr>
+
+          <% } %>
+        </tbody>
       </table>
-      <%= cryptoEjsData[0].name %>
     </div>
 
     <script
