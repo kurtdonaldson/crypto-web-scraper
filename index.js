@@ -4,9 +4,9 @@ if (process.env.NODE_ENV !== "production") {
 
 const cheerio = require("cheerio");
 const express = require("express");
-const axios = require("axios");
+const axios = require("axios").default;
 const path = require("path");
-const { setPriority } = require("os");
+// const { setPriority } = require("os");
 const port = process.env.PORT || 3000;
 
 const app = express();
@@ -25,9 +25,11 @@ async function getCrytoPrices() {
 const { data } = await axios.get(url);
 //Load html in cheerio. We parse it the html data
 const $ = cheerio.load(data);
+//Can load data
 //Access data
 const elemSelector =
-  "#__next > div > div.main-content > div.sc-57oli2-0.comDeo.cmc-body-wrapper > div > div > div.h7vnx2-1.bFzXgL > table > tbody > tr";
+"#__next > div > div.main-content > div.sc-4vztjb-0.cLXodu.cmc-body-wrapper > div > div > div.h7vnx2-1.bFzXgL > table > tbody > tr";
+
 //Store results
 const crytoDataKeys = [
   "position", 
@@ -77,9 +79,11 @@ const crytoObjectArray = [];
           cryptoKeyIndex++;
         }
       });
+      
       crytoObjectArray.push(crypoObject);
   }
 });
+
 return crytoObjectArray;
 
   }catch (error){
@@ -95,6 +99,7 @@ app.set("view engine", "ejs");
 app.get("/", async (req, res) => {
   try{
     const cryptoEjsData = await getCrytoPrices();
+
 
     res.render("index", {cryptoEjsData});
 
