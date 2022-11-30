@@ -28,7 +28,7 @@ const $ = cheerio.load(data);
 //Can load data
 //Access data
 const elemSelector =
-"#__next > div > div.main-content > div.sc-4vztjb-0.cLXodu.cmc-body-wrapper > div > div > div.h7vnx2-1.bFzXgL > table > tbody > tr";
+"#__next > div > div.main-content > div.sc-1a736df3-0.PimrZ.cmc-body-wrapper > div > div:nth-child(1) > div.sc-f7a61dda-2.efhsPu > table > tbody > tr";
 
 //Store results
 const crytoDataKeys = [
